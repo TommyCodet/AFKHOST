@@ -1,0 +1,20 @@
+[Unit]
+Description=AFKHOST Mineflayer Panel
+After=network.target
+
+[Service]
+Type=simple
+User=afkhost
+Group=afkhost
+WorkingDirectory=/opt/afkhost
+EnvironmentFile=/etc/afkhost.env
+ExecStart=/usr/bin/node /opt/afkhost/src/server.js
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/afkhost
+[Install]
+WantedBy=multi-user.target
